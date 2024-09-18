@@ -1,17 +1,21 @@
 <script setup>
+import { AppState } from "@/AppState.js";
 import { housesService } from "@/services/HousesService.js";
 import { logger } from '@/utils/Logger.js';
 import Pop from '@/utils/Pop.js';
-import { computed, onMounted } from 'vue';
+import { computed, onMounted } from "vue";
 
 
+
+
+
+
+
+const houses = computed(() => AppState.houses)
 
 onMounted(() => {
   getHouses()
 })
-
-
-
 
 async function getHouses() {
   try {
@@ -48,7 +52,7 @@ async function getHouses() {
 
   <section class="row">
     <div class="col-12 mb-3">
-
+      {{ houses }}
 
     </div>
 
