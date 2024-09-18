@@ -1,15 +1,43 @@
 <script setup>
 import { House } from "@/models/House.js";
+import { housesService } from "@/services/HousesService.js";
+import { logger } from "@/utils/Logger.js";
+import Pop from "@/utils/Pop.js";
+import { AppState } from "@/AppState.js";
 
 
 
 
 
-defineProps({
+const props = defineProps({
   houseProp: { type: House, required: true }
 
 
 })
+
+const account = (() => AppState.account)
+
+
+async function deleteHouse() {
+  try {
+    const wantsToDelete = await Pop.confirm(`Are you sure you'd like to delete this house?`)
+
+    if (!wantsToDelete) {
+      return
+    }
+    console.log('house id', props.houseProp.id)
+
+    await housesService.deleteHouse(props.houseProp.id)
+
+  }
+  catch (error) {
+    Pop.error(error);
+    logger.error(error)
+  }
+
+
+
+}
 </script>
 
 
@@ -28,7 +56,8 @@ defineProps({
       </div>
     </div>
     <div class="text-end">
-      <button class="btn btn-danger mb-3">Delete Listing</button>
+      <button v-if="houseProp.creatorId == account?.id" @click="deleteHouse()" class="btn btn-danger mb-3">Delete
+        Listing</button>
 
     </div>
   </div>
