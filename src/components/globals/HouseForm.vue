@@ -15,14 +15,26 @@ const editableHouseData = ref({
   price: 0,
   description: '',
 
-
-
 })
+
+
 
 async function createHouse() {
   try {
+    console.log('from the FORM');
+
     const houseData = editableHouseData.value
     await housesService.createHouse(houseData)
+    editableHouseData.value = {
+      bedrooms: 0,
+      bathrooms: 0,
+      levels: 0,
+      year: 1800,
+      imgUrl: '',
+      price: 0,
+      description: '',
+
+    }
   }
   catch (error) {
     Pop.error(error);
