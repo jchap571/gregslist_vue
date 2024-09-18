@@ -1,13 +1,24 @@
+export class House {
+  constructor(data) {
+    this.id = data.id
+    this.bedrooms = data.bedrooms
+    this.bathrooms = data.bathrooms
+    this.level = data.levels
+    this.imgUrl = data.imgUrl
+    this.year = data.year
+    this.price = data.price
+    this.description = data.description
+    this.creatorId = data.creatorId
+    this.createdAt = new Date(data.createdAt)
+    this.updatedAt = new Date(data.createdAt)
+    this.creator = data.creator
 
 
 
 
 
-
-
-
-
-
+  }
+}
 
 const data = {
   "_id": "645d60f381faf24223ae886b",
@@ -29,4 +40,12 @@ const data = {
     "id": "63f7d6202d1cf882287f12e2"
   },
   "id": "645d60f381faf24223ae886b"
+
+
 }
+
+
+
+
+
+
