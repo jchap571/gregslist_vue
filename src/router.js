@@ -25,6 +25,7 @@ const routes = [
   {
     path: '/houses',
     name: 'Houses',
+    component: loadPage('HousesPage')
   },
 
 ]
