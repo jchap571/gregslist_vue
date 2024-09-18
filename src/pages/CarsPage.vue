@@ -35,8 +35,8 @@ async function getCars() {
       </div>
     </section>
     <section class="row my-3">
-      <!-- <div v-if="account != null" class="col-12"> -->
-      <div v-if="account" class="col-12">
+      <!-- NOTE this html will not display if the user is not logged in  -->
+      <div v-if="account" class="col-12"> <!--v-if="account != null"-->
         <CarForm />
       </div>
     </section>
