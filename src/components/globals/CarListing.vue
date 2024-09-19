@@ -20,8 +20,6 @@ async function deleteCar() {
 
     if (!wantsToDelete) { return }
 
-    console.log('car id', props.carProp.id);
-
     await carsService.deleteCar(props.carProp.id)
   } catch (error) {
     Pop.meow(error)
@@ -49,6 +47,8 @@ async function deleteCar() {
           <h4>{{ carProp.priceAsCurrency }}</h4>
         </div>
         <div class="text-end">
+          <!-- NOTE only show this button if the logged in user created the car -->
+          <!-- we need the elvis operator here on the account or else this could potentially access a property of null on page load / if the user is not logged in -->
           <button v-if="carProp.creatorId == account?.id" @click="deleteCar()" class="btn btn-danger" type="button">
             Delete Car
           </button>
